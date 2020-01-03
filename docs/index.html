@@ -1,34 +1,37 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<title>sono</title>
-<style>
-a {
-  display: block;
-}
-</style>
+    <title>sono</title>
+    <style>
+        a {
+            display: block;
+        }
+    </style>
 </head>
+
 <body>
-<script>
-if(fetch) {
-fetch('https://api.github.com/repos/sonornd/me/contents/docs')
-  .then((response) => {
-    return response.json();
-  })
-  .then((jsonResult) => {
-	var list = document.getElementById("list");
-	jsonResult.forEach(function(file) {
-	  if(file.name !== "readme.md" && file.name !== "index.html") {
-	    var filename = file.name.substr(0, file.name.lastIndexOf('.'));
-	    var a = document.createElement('a');
-	    a.text = filename;
-		a.href = "../filename"
-		list.appendChild(a);
-	  }
-	});
-  });
-}
-</script>
-<div id="list"></div>
+    <script>
+        if (fetch) {
+            fetch('https://api.github.com/repos/sonornd/me/contents/docs')
+                .then((response) => {
+                    return response.json();
+                })
+                .then((jsonResult) => {
+                    var list = document.getElementById("list");
+                    jsonResult.forEach(function(file) {
+                        if (file.name !== "readme.md" && file.name !== "index.html") {
+                            var filename = file.name.substr(0, file.name.lastIndexOf('.'));
+                            var a = document.createElement('a');
+                            a.text = filename;
+                            a.href = "../" + filename;
+                            list.appendChild(a);
+                        }
+                    });
+                });
+        }
+    </script>
+    <div id="list"></div>
 </body>
+
 </html>
